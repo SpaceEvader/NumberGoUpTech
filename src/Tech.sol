@@ -117,7 +117,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Tech is ERC20, Ownable(msg.sender) {
     // Added state variable for improving tech
-    // Lubrication prevents any wallet receiving more than 1% of Tech in the opening days.
+    // Lubrication prevents any wallet receiving more than 2% of Tech in the opening days.
     bool public lubricating = true;
     address public liquidityPool;
 
@@ -151,10 +151,10 @@ contract Tech is ERC20, Ownable(msg.sender) {
         // Allow deployer (owner) to send/receive any amount and the liquidityPool to receive any amount.
         // This allows for loading of the LP, and for people to sell tokens into the LP whilst lubrication in progress.
         if (lubricating && from != owner() && to != liquidityPool) {
-            // Require that a receiving wallet will not hold more than 1% of supply after a transfer whilst lubrication is in effect
+            // Require that a receiving wallet will not hold more than 2% of supply after a transfer whilst lubrication is in effect
             require(
-                balanceOf(to) <= totalSupply() / 100,
-                "Just getting warmed up, limit of 1% of Tech until Lubrication is complete!"
+                balanceOf(to) <= totalSupply() / 50,
+                "Just getting warmed up, limit of 2% of Tech until Lubrication is complete!"
             );
         }
     }
