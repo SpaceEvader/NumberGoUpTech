@@ -122,7 +122,7 @@ contract Tech is ERC20, Ownable(msg.sender) {
     address public liquidityPool;
 
     // Mint the totalSupply to the deployer
-    constructor() ERC20("Tech", "TECH") {
+    constructor() ERC20("NumberGoUpTech", "TECH") {
         _mint(msg.sender, 69420000000 * 10 ** 18);
     }
 
