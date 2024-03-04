@@ -116,8 +116,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 
 contract Tech is ERC20, Ownable(msg.sender) {
-    // Added state variable for lubrication - gently does it!
-    // Lubrication prevents any wallet receiving more than 1% of Kimbo in the opening days.
+    // Added state variable for improving tech
+    // Lubrication prevents any wallet receiving more than 1% of Tech in the opening days.
     bool public lubricating = true;
     address public liquidityPool;
 
@@ -154,7 +154,7 @@ contract Tech is ERC20, Ownable(msg.sender) {
             // Require that a receiving wallet will not hold more than 1% of supply after a transfer whilst lubrication is in effect
             require(
                 balanceOf(to) <= totalSupply() / 100,
-                "Just getting warmed up, limit of 1% of Kimbo can be Inu until Lubrication is complete!"
+                "Just getting warmed up, limit of 1% of Tech until Lubrication is complete!"
             );
         }
     }
